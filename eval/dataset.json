@@ -1,0 +1,85 @@
+{
+  "_note": "Hand-authored transcript fixtures (eval/transcripts/*.json) standing in for real short talks — ingestion runs the real chunking + embedding + Chroma pipeline against them, skipping only audio extraction/Whisper since these are plain-text stand-ins, not actual video files. See README 'Evaluation' section for what this does and doesn't prove, and 'Future work' for swapping in real recorded video.",
+  "videos": [
+    {
+      "video_id": "intro-to-photosynthesis",
+      "transcript_path": "transcripts/intro-to-photosynthesis.json",
+      "language": "en"
+    },
+    {
+      "video_id": "history-of-the-internet",
+      "transcript_path": "transcripts/history-of-the-internet.json",
+      "language": "en"
+    },
+    {
+      "video_id": "basics-of-nutrition",
+      "transcript_path": "transcripts/basics-of-nutrition.json",
+      "language": "en"
+    }
+  ],
+  "queries": [
+    {
+      "query": "What is chlorophyll and why is it green?",
+      "language": "en",
+      "video_id": "intro-to-photosynthesis",
+      "expected_start": 32.0,
+      "expected_end": 50.0
+    },
+    {
+      "query": "¿Dónde ocurren las reacciones que dependen de la luz?",
+      "language": "es",
+      "video_id": "intro-to-photosynthesis",
+      "expected_start": 50.0,
+      "expected_end": 74.0
+    },
+    {
+      "query": "प्रकाश संश्लेषण महत्वपूर्ण क्यों है?",
+      "language": "hi",
+      "video_id": "intro-to-photosynthesis",
+      "expected_start": 146.0,
+      "expected_end": 168.0
+    },
+    {
+      "query": "Who invented the World Wide Web?",
+      "language": "en",
+      "video_id": "history-of-the-internet",
+      "expected_start": 76.0,
+      "expected_end": 98.0
+    },
+    {
+      "query": "¿Qué pasó durante el auge y la caída de las punto-com?",
+      "language": "es",
+      "video_id": "history-of-the-internet",
+      "expected_start": 120.0,
+      "expected_end": 142.0
+    },
+    {
+      "query": "इंटरनेट की शुरुआत कैसे हुई?",
+      "language": "hi",
+      "video_id": "history-of-the-internet",
+      "expected_start": 0.0,
+      "expected_end": 16.0
+    },
+    {
+      "query": "What is protein used for in the body?",
+      "language": "en",
+      "video_id": "basics-of-nutrition",
+      "expected_start": 36.0,
+      "expected_end": 58.0
+    },
+    {
+      "query": "¿Por qué es importante mantenerse hidratado?",
+      "language": "es",
+      "video_id": "basics-of-nutrition",
+      "expected_start": 100.0,
+      "expected_end": 122.0
+    },
+    {
+      "query": "कार्बोहाइड्रेट शरीर के लिए क्या करते हैं?",
+      "language": "hi",
+      "video_id": "basics-of-nutrition",
+      "expected_start": 15.0,
+      "expected_end": 36.0
+    }
+  ]
+}

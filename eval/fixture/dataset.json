@@ -1,0 +1,26 @@
+{
+  "_note": "Tiny fixture for CI — checks the eval script's pipeline and metric computation stay correct on every PR, run with --fake-embedder so CI needs no model download. Not used for the README's reported numbers.",
+  "videos": [
+    {
+      "video_id": "tiny-demo",
+      "transcript_path": "transcripts/tiny-demo.json",
+      "language": "en"
+    }
+  ],
+  "queries": [
+    {
+      "query": "How does water turn into vapor?",
+      "language": "en",
+      "video_id": "tiny-demo",
+      "expected_start": 10.0,
+      "expected_end": 20.0
+    },
+    {
+      "query": "¿Cómo se forman las nubes?",
+      "language": "es",
+      "video_id": "tiny-demo",
+      "expected_start": 20.0,
+      "expected_end": 30.0
+    }
+  ]
+}

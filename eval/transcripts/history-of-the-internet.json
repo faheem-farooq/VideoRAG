@@ -1,0 +1,10 @@
+[
+  {"start": 0.0, "end": 16.0, "text": "Let's trace where the internet actually came from. It starts in 1969 with ARPANET, a project funded by the US Department of Defense to connect research computers together."},
+  {"start": 16.0, "end": 34.0, "text": "ARPANET used a new idea called packet switching, breaking data into small packets that could travel independently across the network and be reassembled at the destination."},
+  {"start": 34.0, "end": 54.0, "text": "In 1983, ARPANET adopted a new set of rules called TCP/IP, which let different networks talk to each other. That's the moment most historians mark as the real birth of the modern internet."},
+  {"start": 54.0, "end": 76.0, "text": "For the next decade the internet was mostly used by universities and the military. It wasn't very easy for ordinary people to use, since there was no simple way to browse content."},
+  {"start": 76.0, "end": 98.0, "text": "That changed in 1989 when Tim Berners-Lee, working at CERN, proposed the World Wide Web, a system of linked hypertext documents you could navigate with a browser."},
+  {"start": 98.0, "end": 120.0, "text": "The first popular graphical web browser, Mosaic, was released in 1993, and that's really when the internet started reaching everyday households, not just researchers."},
+  {"start": 120.0, "end": 142.0, "text": "The late 1990s brought the dot-com boom, an explosion of new internet companies and massive investment, followed by a dramatic crash in 2000 when many of those companies collapsed."},
+  {"start": 142.0, "end": 162.0, "text": "Since then the internet has grown into the backbone of global communication, commerce, and culture, connecting billions of devices instead of just a handful of research labs."}
+]

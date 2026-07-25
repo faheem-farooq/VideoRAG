@@ -1,0 +1,58 @@
+services:
+  chroma:
+    image: chromadb/chroma:latest
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v2/heartbeat"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      CHROMA_HOST: chroma
+      CHROMA_PORT: 8000
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-1.5-flash}
+      TRANSCRIPTION_BACKEND: ${TRANSCRIPTION_BACKEND:-faster_whisper}
+      FASTER_WHISPER_MODEL_SIZE: ${FASTER_WHISPER_MODEL_SIZE:-small}
+      FASTER_WHISPER_DEVICE: ${FASTER_WHISPER_DEVICE:-cpu}
+      FASTER_WHISPER_COMPUTE_TYPE: ${FASTER_WHISPER_COMPUTE_TYPE:-int8}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-sentence-transformers/LaBSE}
+      API_CORS_ORIGINS: http://localhost:3000
+      UPLOAD_DIR: /data/uploads
+      JOB_DB_PATH: /data/jobs.db
+    volumes:
+      - videorag_data:/data
+      - model_cache:/root/.cache/huggingface
+    depends_on:
+      chroma:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
+  videorag_data:
+  model_cache:
