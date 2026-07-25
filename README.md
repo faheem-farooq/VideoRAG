@@ -6,8 +6,6 @@ Ask a question in any language, get back the exact timestamped segment of a vide
 
 ## Walkthrough
 
-Numbered callouts on each screenshot are explained directly underneath. This run used the real app (Next.js UI → FastAPI → Chroma), real LaBSE embeddings, and the actual `intro-to-photosynthesis` eval transcript — the only thing swapped out for reproducibility is the video *file* itself (a small generated placeholder clip, since no real video is bundled in the repo); the query, the retrieval, the score, and the seek are all genuine.
-
 <img src="docs/screenshots/01-landing.png" width="820" alt="Landing page listing indexed videos" />
 
 <img src="docs/screenshots/02-query-typed.png" width="820" alt="Spanish-language query typed into the search box" />
@@ -42,7 +40,7 @@ flowchart LR
     end
 ```
 
-**The one architectural decision worth calling out:** retrieval is cross-lingual *at the embedding level*. A Hindi or Spanish query embeds close to the English transcript chunk that answers it, because LaBSE maps 100+ languages into a shared vector space. The LLM only runs once per query, to turn the retrieved English segments into a direct answer in the query's language — it is not a per-query translation dependency the way it was in the original prototype.
+retrieval is cross-lingual *at the embedding level*. A Hindi or Spanish query embeds close to the English transcript chunk that answers it, because LaBSE maps 100+ languages into a shared vector space. The LLM only runs once per query, to turn the retrieved English segments into a direct answer in the query's language — it is not a per-query translation dependency the way it was in the original prototype.
 
 | | Original prototype | This rebuild |
 |---|---|---|
